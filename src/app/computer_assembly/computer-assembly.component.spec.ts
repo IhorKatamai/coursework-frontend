@@ -1,15 +1,15 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { AppComponent } from './app.component';
+import { ComputerAssemblyComponent } from './computer-assembly.component';
 
-describe('AppComponent', () => {
+describe('ComputerAssemblyComponent', () => {
   beforeEach(() => TestBed.configureTestingModule({
     imports: [RouterTestingModule],
-    declarations: [AppComponent]
+    declarations: [ComputerAssemblyComponent]
   }));
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
+  it('should create component', () => {
+    const fixture = TestBed.createComponent(ComputerAssemblyComponent);
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();
   });
