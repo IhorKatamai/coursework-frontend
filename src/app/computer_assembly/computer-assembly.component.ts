@@ -27,7 +27,7 @@ export class ComputerAssemblyComponent {
   submit() {
     this.loading = true;
     this.http.post(
-      'http://localhost:8080/api/computer-assembly',
+      'http://localhost:8080/api/computer-assemblies',
       { ...this.form.value }
     ).subscribe(() => {
       this.loading = false;
