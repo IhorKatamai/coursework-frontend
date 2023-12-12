@@ -1,68 +1,75 @@
 <header class="header">
   <div class="header-content">
-    <button class="header-btn"><img src="assets/arrow-back.svg"></button>
+    <button class="header-btn" (click)="returnBack()"><img src="assets/arrow-back.svg"></button>
     <h1 class="header-text">TechBuild Solutions</h1>
   </div>
 </header>
 
 <main class="main">
-  <form>
+  <form [formGroup]="form" (ngSubmit)="submit()">
     <h2 class="form-header">Складання комп’ютера</h2>
 
     <div class="form-controls">
       <div>
         <label>Модель комп’ютера:</label>
-        <select formControlName="">
-          <option value="Оплата при отриманні товару(готівка)">Оплата</option>
-          <option value="Оплата картою при отримані товару">при отримані товару</option>
+        <select formControlName="computerModel" >
+          <option value="lenovo">Lenovo</option>
+          <option value="hp">HP</option>
+          <option value="dell">Dell</option>
+          <option value="acer">Acer</option>
+          <option value="asus">ASUS</option>
         </select>
       </div>
 
       <div>
         <label>Спосіб доставки:</label>
-        <select formControlName="">
-          <option value="Оплата при отриманні товару(готівка)">Оплата</option>
-          <option value="Оплата картою при отримані товару">при отримані товару</option>
+        <select formControlName="delivery">
+          <option value="courier">Кур'єром</option>
+          <option value="self-removal">Самовиніс</option>
         </select>
       </div>
 
       <div>
         <label>Номер телефону:</label>
-        <input type="tel" formControlName="" />
+        <input type="tel" formControlName="phoneNumber" />
       </div>
 
       <div>
         <label>Адреса доставки:</label>
-        <input type="text" formControlName="" />
+        <input type="text" formControlName="deliveryAddress" />
       </div>
 
       <div>
         <label>Термінове складання:</label>
-        <select formControlName="">
-          <option value="Оплата при отриманні товару(готівка)">Оплата</option>
-          <option value="Оплата картою при отримані товару">при отримані товару</option>
+        <select formControlName="urgent">
+          <option value="0">Ні</option>
+          <option value="1">Так</option>
         </select>
       </div>
 
       <div>
         <label>Спосіб оплати:</label>
-        <select formControlName="">
-          <option value="Оплата при отриманні товару(готівка)">Оплата</option>
-          <option value="Оплата картою при отримані товару">при отримані товару</option>
+        <select formControlName="payment">
+          <option value="cash">Готівковий</option>
+          <option value="card">Безготівковий</option>
         </select>
       </div>
 
       <div class="form-text-area">
         <label>Інформація про деталі:</label>
-        <textarea formControlName=""></textarea>
+        <textarea formControlName="additionalInfo"></textarea>
       </div>
     </div>
 
     <div class="form-btns">
-      <button class="form-submit-btn" type="submit">Підтвердити замовлення</button>
-      <button class="form-cancel-btn" type="button">Скасувати замовлення</button>
+      <button class="form-submit-btn" type="submit" [disabled]="form.invalid">Підтвердити замовлення</button>
+      <button class="form-cancel-btn" type="button" (click)="returnBack()">Скасувати замовлення</button>
     </div>
 
     <div class="form-hint">Ми зателефонуємо Вам для узгодження всіх деталей!</div>
   </form>
 </main>
+
+<div *ngIf="loading" class="loader-container">
+  <div><span class="loader"></span></div>
+</div>
